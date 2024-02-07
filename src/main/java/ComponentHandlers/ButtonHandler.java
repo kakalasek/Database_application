@@ -5,11 +5,13 @@ import java.awt.*;
 
 public class ButtonHandler {
 
-    public static JButton create(Rectangle bounds, String text){
+    public static JButton create(Rectangle bounds, String text, Font font){
 
         JButton button = new JButton();
 
         button.setText(text);
+
+        button.setFont(font);
 
         button.setSize(bounds.width, bounds.height);
 
