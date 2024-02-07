@@ -1,8 +1,8 @@
 package Windows;
 
+import ComponentHandlers.ButtonHandler;
 import ComponentHandlers.FrameHandler;
 import ComponentHandlers.LabelHandler;
-import ComponentHandlers.PanelHandler;
 import utils.TextUtils;
 
 import javax.swing.*;
@@ -19,6 +19,10 @@ public class MainMenu extends JFrame {
 
         JLabel icon = LabelHandler.createImage(this.getWidth(), 0, "src/main/resources/images/poisonous_plant.png");
         this.add(icon);
+
+        JButton quit = ButtonHandler.create(new Rectangle(0, this.getHeight() - 60, 200, 35), "QUIT");
+        ButtonHandler.centerInFrame(quit, this);
+        this.add(quit);
 
         this.setVisible(true);
     }
