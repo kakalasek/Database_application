@@ -42,23 +42,23 @@ public class MainMenu extends JFrame {
         this.add(icon);
 
         /* All the items (buttons) */
-        JButton search = ButtonHandler.create(new Rectangle(0, FIRST_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "SEARCH", Constants.DEFAULT_FONT_BOLD);
+        JButton search = ButtonHandler.create(new Rectangle(0, FIRST_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "SEARCH", Constants.DEFAULT_FONT_BOLD, this::dispose);
         ButtonHandler.centerInFrame(search, this);
         this.add(search);
 
-        JButton add = ButtonHandler.create(new Rectangle(0, SECOND_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "ADD", Constants.DEFAULT_FONT_BOLD);
+        JButton add = ButtonHandler.create(new Rectangle(0, SECOND_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "ADD", Constants.DEFAULT_FONT_BOLD, this::dispose);
         ButtonHandler.centerInFrame(add, this);
         this.add(add);
 
-        JButton update = ButtonHandler.create(new Rectangle(0, THIRD_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "UPDATE", Constants.DEFAULT_FONT_BOLD);
+        JButton update = ButtonHandler.create(new Rectangle(0, THIRD_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "UPDATE", Constants.DEFAULT_FONT_BOLD, this::dispose);
         ButtonHandler.centerInFrame(update, this);
         this.add(update);
 
-        JButton remove = ButtonHandler.create(new Rectangle(0, FOURTH_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "REMOVE", Constants.DEFAULT_FONT_BOLD);
+        JButton remove = ButtonHandler.create(new Rectangle(0, FOURTH_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "REMOVE", Constants.DEFAULT_FONT_BOLD, this::dispose);
         ButtonHandler.centerInFrame(remove, this);
         this.add(remove);
 
-        JButton quit = ButtonHandler.create(new Rectangle(0, FIFTH_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "QUIT", Constants.DEFAULT_FONT_BOLD);
+        JButton quit = ButtonHandler.create(new Rectangle(0, FIFTH_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "QUIT", Constants.DEFAULT_FONT_BOLD, this::dispose);
         ButtonHandler.centerInFrame(quit, this);
         this.add(quit);
 

@@ -1,7 +1,11 @@
 package ComponentHandlers;
 
+import utils.Function;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Handles button creation, button centering etc.
@@ -19,9 +23,10 @@ public class ButtonHandler {
      * @param bounds x and y coordinates, width and height of the button (in this exact order)
      * @param text Text which will be displayed on the button
      * @param font Font to be applied to the button text
+     * @param func Function to be executed when the button is pressed
      * @return The initialized button
      */
-    public static JButton create(Rectangle bounds, String text, Font font){
+    public static JButton create(Rectangle bounds, String text, Font font, Function func){
 
         JButton button = new JButton();
 
@@ -32,6 +37,13 @@ public class ButtonHandler {
         button.setSize(bounds.width, bounds.height);
 
         button.setLocation(bounds.x, bounds.y - button.getHeight());
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                func.apply();
+            }
+        });
 
         return button;
     }
