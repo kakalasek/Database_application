@@ -13,6 +13,8 @@ public class PanelHandler {
 
         panel.setBounds(bounds);
 
+        panel.setBackground(Color.red);
+
         return panel;
 
     }

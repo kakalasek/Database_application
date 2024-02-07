@@ -3,19 +3,23 @@ package Windows;
 import ComponentHandlers.FrameHandler;
 import ComponentHandlers.LabelHandler;
 import ComponentHandlers.PanelHandler;
+import utils.TextUtils;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class MainMenu extends JFrame {
 
-    JPanel mainPanel;
-
     public MainMenu(){
         FrameHandler.handle(this, new Dimension(1080, 720), "MAIN MENU", WindowConstants.EXIT_ON_CLOSE);
 
-        mainPanel = PanelHandler.create(new Rectangle(0, 0, this.getWidth(), this.getHeight()));
+        JLabel title = LabelHandler.createText(0,10, "Poisonous Plants", TextUtils.BIG_FONT_BOLD);
+        LabelHandler.centerInFrame(title, this);
+        this.add(title);
 
-        this.add(mainPanel);
+        JLabel icon = LabelHandler.createImage(this.getWidth(), 0, "src/main/resources/images/poisonous_plant.png");
+        this.add(icon);
+
+        this.setVisible(true);
     }
 }
