@@ -5,9 +5,11 @@ import ComponentHandlers.ButtonHandler;
 import ComponentHandlers.FrameHandler;
 import ComponentHandlers.LabelHandler;
 import Constants.Constants;
+import Windows.Templates.AddDeleteUpdate;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Optional;
 
 /**
  * This class represents the main menu of this application
@@ -18,7 +20,7 @@ public class MainMenu extends JFrame {
     public MainMenu(){
 
         /* Initializes the frame, sets the default values etc. */
-        FrameHandler.handle(this, new Dimension(1080, 720), "MAIN MENU", WindowConstants.EXIT_ON_CLOSE);
+        FrameHandler.handle(this, new Dimension(1080, 720), "MAIN MENU", WindowConstants.EXIT_ON_CLOSE, null);
 
         /* ADJUSTABLE LOCAL CONSTANTS */
         final int BOTTOM_PADDING = 100;
@@ -42,19 +44,19 @@ public class MainMenu extends JFrame {
         this.add(icon);
 
         /* All the items (buttons) */
-        JButton search = ButtonHandler.create(new Rectangle(0, FIRST_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "SEARCH", Constants.DEFAULT_FONT_BOLD, this::dispose);
+        JButton search = ButtonHandler.create(new Rectangle(0, FIRST_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "SEARCH", Constants.DEFAULT_FONT_BOLD, null);
         ButtonHandler.centerInFrame(search, this);
         this.add(search);
 
-        JButton add = ButtonHandler.create(new Rectangle(0, SECOND_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "ADD", Constants.DEFAULT_FONT_BOLD, this::dispose);
+        JButton add = ButtonHandler.create(new Rectangle(0, SECOND_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "ADD", Constants.DEFAULT_FONT_BOLD, AddDeleteUpdate::createWindow);
         ButtonHandler.centerInFrame(add, this);
         this.add(add);
 
-        JButton update = ButtonHandler.create(new Rectangle(0, THIRD_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "UPDATE", Constants.DEFAULT_FONT_BOLD, this::dispose);
+        JButton update = ButtonHandler.create(new Rectangle(0, THIRD_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "UPDATE", Constants.DEFAULT_FONT_BOLD, AddDeleteUpdate::createWindow);
         ButtonHandler.centerInFrame(update, this);
         this.add(update);
 
-        JButton remove = ButtonHandler.create(new Rectangle(0, FOURTH_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "REMOVE", Constants.DEFAULT_FONT_BOLD, this::dispose);
+        JButton remove = ButtonHandler.create(new Rectangle(0, FOURTH_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "REMOVE", Constants.DEFAULT_FONT_BOLD, AddDeleteUpdate::createWindow);
         ButtonHandler.centerInFrame(remove, this);
         this.add(remove);
 

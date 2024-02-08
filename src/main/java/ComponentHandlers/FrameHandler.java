@@ -1,7 +1,12 @@
 package ComponentHandlers;
 
+import utils.Function;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.Optional;
 
 /**
  * Handles the initialization of frames, so I don't have to
@@ -14,15 +19,23 @@ public class FrameHandler {
      * @param frame Frame to initialize
      * @param size Size of the frame
      * @param title Title of the frame
-     * @param onCloseOperation What to perform after closing the frame
+     * @param onCloseOperation General operation to perform after closing the frame (e.g. EXIT_ON_CLOSE)
+     * @param onCloseAction Special action to perform after closing the frame
      */
-    public static void handle(JFrame frame, Dimension size, String title, int onCloseOperation){
+    public static void handle(JFrame frame, Dimension size, String title, int onCloseOperation, Function onCloseAction){
 
         frame.setTitle(title);
 
         frame.setSize(size);
 
         frame.setDefaultCloseOperation(onCloseOperation);
+
+        if(onCloseAction != null) frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                onCloseAction.apply();
+            }
+        });
 
         frame.setResizable(false);
 
