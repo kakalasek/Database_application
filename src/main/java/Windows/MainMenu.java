@@ -19,7 +19,7 @@ public class MainMenu extends JFrame {
     public MainMenu(){
 
         /* Initializes the frame, sets the default values etc. */
-        FrameHandler.handle(this, new Dimension(1080, 720), "Hlavní menu", WindowConstants.EXIT_ON_CLOSE, null);
+        FrameHandler.handle(this, new Dimension(980, 620), "Hlavní menu", WindowConstants.EXIT_ON_CLOSE, null);
 
         /* ADJUSTABLE LOCAL CONSTANTS */
         final int BOTTOM_PADDING = 100;
@@ -34,7 +34,7 @@ public class MainMenu extends JFrame {
 
         /* ADDING COMPONENTS */
         /* Title */
-        JLabel title = LabelHandler.createText(0,10, "JEDOVATÉ ROSTLINY", Constants.BIG_FONT_BOLD);
+        JLabel title = LabelHandler.createText(0,10, "JEDOVATÉ ROSTLINY", Constants.BIG_FONT);
         LabelHandler.centerInFrame(title, this);
         this.add(title);
 
