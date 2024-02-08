@@ -18,8 +18,7 @@ public class ButtonHandler {
      * Creates a button.
      * Note that this method does not take into account the font size of the button,
      * so there is no guarantee that all the text will fit.
-     * Also note that this method sets the y-coordinate
-     * exactly to the top left corner, because it counts with the button height.
+     * Also note that this method subtracts the width of the button from the y coordinate. It just does it, deal with it.
      * @param bounds x and y coordinates, width and height of the button (in this exact order)
      * @param text Text which will be displayed on the button
      * @param font Font to be applied to the button text
