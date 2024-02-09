@@ -1,0 +1,247 @@
+-- Rod, Druh, Čeleď, Řád, Třída, Oddělení, Podříše
+CREATE TABLE rod(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    nazev VARCHAR2(50) NOT NULL UNIQUE,
+    CHECK (REGEXP_LIKE(nazev, '^[ěščřžýáíéóúůďťňĎŇŤŠČŘŽÝÁÍÉÚŮĚÓa-zA-Z]*$')),
+    PRIMARY KEY (id)
+);
+
+COMMIT;
+
+CREATE TABLE druh(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    nazev VARCHAR2(50) NOT NULL UNIQUE,
+    CHECK (REGEXP_LIKE(nazev, '^[ěščřžýáíéóúůďťňĎŇŤŠČŘŽÝÁÍÉÚŮĚÓa-zA-Z]*$')),
+    PRIMARY KEY (id)
+);
+
+COMMIT;
+
+CREATE TABLE celed(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    nazev VARCHAR2(50) NOT NULL UNIQUE,
+    CHECK (REGEXP_LIKE(nazev, '^[ěščřžýáíéóúůďťňĎŇŤŠČŘŽÝÁÍÉÚŮĚÓa-zA-Z]*$')),
+    PRIMARY KEY (id)
+);
+
+COMMIT;
+
+CREATE TABLE rad(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    nazev VARCHAR2(50) NOT NULL UNIQUE,
+    CHECK (REGEXP_LIKE(nazev, '^[ěščřžýáíéóúůďťňĎŇŤŠČŘŽÝÁÍÉÚŮĚÓa-zA-Z]*$')),
+    PRIMARY KEY (id)
+);
+
+COMMIT;
+
+CREATE TABLE trida(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    nazev VARCHAR2(50) NOT NULL UNIQUE,
+    CHECK (REGEXP_LIKE(nazev, '^[ěščřžýáíéóúůďťňĎŇŤŠČŘŽÝÁÍÉÚŮĚÓa-zA-Z]*$')),
+    PRIMARY KEY (id)
+);
+
+COMMIT;
+
+CREATE TABLE oddeleni(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    nazev VARCHAR2(50) NOT NULL UNIQUE,
+    CHECK (REGEXP_LIKE(nazev, '^[ěščřžýáíéóúůďťňĎŇŤŠČŘŽÝÁÍÉÚŮĚÓa-zA-Z]*$')),
+    PRIMARY KEY (id)
+);
+
+COMMIT;
+
+CREATE TABLE podrise(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    nazev VARCHAR2(50) NOT NULL UNIQUE,
+    CHECK (REGEXP_LIKE(nazev, '^[ěščřžýáíéóúůďťňĎŇŤŠČŘŽÝÁÍÉÚŮĚÓa-zA-Z]*$')),
+    PRIMARY KEY (id)
+);
+
+COMMIT;
+
+-- Délka života
+CREATE TABLE delka_zivota(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    nazev VARCHAR2(50) NOT NULL UNIQUE,
+    CHECK (REGEXP_LIKE(nazev, '^[ěščřžýáíéóúůďťňĎŇŤŠČŘŽÝÁÍÉÚŮĚÓa-zA-Z]*$')),
+    PRIMARY KEY (id)
+);
+
+COMMIT;
+
+-- Plod - Druh, Barva, Tvar
+
+CREATE TABLE plod_druh(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    nazev VARCHAR2(50) NOT NULL UNIQUE,
+    CHECK (REGEXP_LIKE(nazev, '^[ěščřžýáíéóúůďťňĎŇŤŠČŘŽÝÁÍÉÚŮĚÓa-zA-Z]*$')),
+    PRIMARY KEY (id)
+);
+
+COMMIT;
+
+CREATE TABLE plod_barva(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    nazev VARCHAR2(50) NOT NULL UNIQUE,
+    CHECK (REGEXP_LIKE(nazev, '^[ěščřžýáíéóúůďťňĎŇŤŠČŘŽÝÁÍÉÚŮĚÓa-zA-Z]*$')),
+    PRIMARY KEY (id)
+);
+
+COMMIT;
+
+CREATE TABLE plod_tvar(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    nazev VARCHAR2(50) NOT NULL UNIQUE,
+    CHECK (REGEXP_LIKE(nazev, '^[ěščřžýáíéóúůďťňĎŇŤŠČŘŽÝÁÍÉÚŮĚÓa-zA-Z]*$')),
+    PRIMARY KEY (id)
+);
+
+COMMIT;
+
+-- Plod
+CREATE TABLE plod(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    druh_id NUMBER REFERENCES plod_druh(id) ON DELETE SET NULL,
+    barva_id NUMBER REFERENCES plod_barva(id) ON DELETE SET NULL,
+    tvar_id NUMBER REFERENCES plod_tvar(id) ON DELETE SET NULL,
+    UNIQUE (druh_id, barva_id, tvar_id),
+    PRIMARY KEY (id)
+);
+
+COMMIT;
+
+-- Rostlina
+CREATE TABLE rostlina(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    rod_id NUMBER NOT NULL REFERENCES rod(id) ON DELETE CASCADE,
+    druh_id NUMBER NOT NULL REFERENCES druh(id) ON DELETE CASCADE,
+    celed_id NUMBER REFERENCES celed(id) ON DELETE SET NULL,
+    rad_id NUMBER REFERENCES rad(id) ON DELETE SET NULL,
+    trida_id NUMBER REFERENCES trida(id) ON DELETE SET NULL,
+    oddeleni_id NUMBER REFERENCES oddeleni(id) ON DELETE SET NULL,
+    podrise_id NUMBER REFERENCES podrise(id) ON DELETE SET NULL,
+    delka_zivota_id NUMBER REFERENCES delka_zivota(id) ON DELETE SET NULL,
+    plod_id NUMBER REFERENCES plod(id) ON DELETE SET NULL,
+    vyska_cm NUMBER CHECK (vyska_cm > 0),
+    sirka_cm NUMBER CHECK (sirka_cm > 0),
+    delka_cm NUMBER CHECK (delka_cm > 0),
+    UNIQUE (rod_id, druh_id),
+    PRIMARY KEY (id)
+);
+
+COMMIT;
+
+-- Prostředí
+CREATE TABLE prostredi(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    nazev VARCHAR2(50) NOT NULL UNIQUE,
+    CHECK (REGEXP_LIKE(nazev, '^[ěščřžýáíéóúůďťňĎŇŤŠČŘŽÝÁÍÉÚŮĚÓa-zA-Z]*$')),
+    PRIMARY KEY (id)
+);
+
+COMMIT;
+
+-- Roste
+CREATE TABLE roste(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    rostlina_id NUMBER NOT NULL REFERENCES rostlina(id) ON DELETE CASCADE,
+    prostredi_id NUMBER NOT NULL REFERENCES prostredi(id) ON DELETE CASCADE,
+    PRIMARY KEY (id)
+);
+
+COMMIT;
+
+-- Země
+CREATE TABLE zeme(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    nazev VARCHAR2(50) NOT NULL UNIQUE,
+    CHECK (REGEXP_LIKE(nazev, '^[ěščřžýáíéóúůďťňĎŇŤŠČŘŽÝÁÍÉÚŮĚÓa-zA-Z]*$')),
+    PRIMARY KEY (id)
+);
+
+COMMIT;
+
+-- Výskyt
+CREATE TABLE vyskyt(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    rostlina_id NUMBER NOT NULL REFERENCES rostlina(id) ON DELETE CASCADE,
+    zeme_id NUMBER NOT NULL REFERENCES zeme(id) ON DELETE CASCADE,
+    PRIMARY KEY (id)
+);
+
+COMMIT;
+
+-- Část
+CREATE TABLE rostlina_cast(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    nazev VARCHAR2(50) NOT NULL UNIQUE,
+    CHECK (REGEXP_LIKE(nazev, '^[ěščřžýáíéóúůďťňĎŇŤŠČŘŽÝÁÍÉÚŮĚÓa-zA-Z]*$')),
+    PRIMARY KEY (id)
+);
+
+COMMIT;
+
+-- Jedovatý
+CREATE TABLE jedovaty(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    rostlina_id NUMBER NOT NULL REFERENCES rostlina(id) ON DELETE CASCADE,
+    cast_id NUMBER NOT NULL REFERENCES rostlina_cast(id) ON DELETE CASCADE,
+    PRIMARY KEY (id)
+);
+
+COMMIT;
+
+-- Skupina
+CREATE TABLE skupina(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    nazev VARCHAR2(50) NOT NULL UNIQUE,
+    CHECK (REGEXP_LIKE(nazev, '^[ěščřžýáíéóúůďťňĎŇŤŠČŘŽÝÁÍÉÚŮĚÓa-zA-Z]*$')),
+    PRIMARY KEY (id)
+);
+
+COMMIT;
+
+-- Jed
+CREATE TABLE jed(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    nazev VARCHAR2(50) NOT NULL UNIQUE,
+    skupina_id NUMBER REFERENCES skupina(id) ON DELETE SET NULL,
+    ld50_mg NUMBER CHECK(ld50_mg>0),
+    CHECK (REGEXP_LIKE(nazev, '^[ěščřžýáíéóúůďťňĎŇŤŠČŘŽÝÁÍÉÚŮĚÓa-zA-Z]*$')),
+    PRIMARY KEY (id)
+);
+
+COMMIT;
+
+-- Účinky
+CREATE TABLE ucinek(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    nazev VARCHAR2(50) NOT NULL UNIQUE,
+    CHECK (REGEXP_LIKE(nazev, '^[ěščřžýáíéóúůďťňĎŇŤŠČŘŽÝÁÍÉÚŮĚÓa-zA-Z]*$')),
+    PRIMARY KEY (id)
+);
+
+COMMIT;
+
+-- Způsobuje
+CREATE TABLE zpusobuje(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    jed_id NUMBER NOT NULL REFERENCES jed(id) ON DELETE CASCADE,
+    ucinek_id NUMBER NOT NULL REFERENCES ucinek(id) ON DELETE CASCADE,
+    PRIMARY KEY (id)
+);
+
+COMMIT;
+
+-- Obsahuje
+CREATE TABLE obsahuje(
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    jed_id NUMBER NOT NULL REFERENCES jed(id) ON DELETE CASCADE,
+    rostlina_id NUMBER NOT NULL REFERENCES rostlina(id) ON DELETE CASCADE,
+    PRIMARY KEY (id)
+);
+
+COMMIT;
