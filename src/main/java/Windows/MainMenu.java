@@ -43,7 +43,7 @@ public class MainMenu extends JFrame {
         this.add(icon);
 
         /* All the items (buttons) */
-        JButton search = ButtonHandler.create(new Rectangle(0, FIRST_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "PROHLÍŽET", Constants.DEFAULT_FONT_BOLD, () -> Search.CreateWindow());
+        JButton search = ButtonHandler.create(new Rectangle(0, FIRST_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "PROHLÍŽET", Constants.DEFAULT_FONT_BOLD, Search::CreateWindow);
         ButtonHandler.centerInFrame(search, this);
         this.add(search);
 

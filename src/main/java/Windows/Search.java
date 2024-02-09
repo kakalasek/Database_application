@@ -1,9 +1,6 @@
 package Windows;
 
-import ComponentHandlers.ButtonHandler;
-import ComponentHandlers.FrameHandler;
-import ComponentHandlers.InputHandler;
-import ComponentHandlers.LabelHandler;
+import ComponentHandlers.*;
 import Constants.Constants;
 
 import javax.swing.*;
@@ -30,7 +27,7 @@ public class Search extends JFrame {
         final int BIGGER_GAP = 30;
         final int BUTTON_GAP = 70;
 
-        /* INITIALING COMPONENTS AND SOME MORE LOCAL CONSTANTS */
+        /* ADDING COMPONENTS AND SOME MORE LOCAL CONSTANTS */
         JLabel genericLabel = LabelHandler.createText(PADDING_LEFT, PADDING_UP_TEXT, "Rodové jméno:", Constants.DEFAULT_FONT);
         this.add(genericLabel);
 
@@ -53,6 +50,11 @@ public class Search extends JFrame {
 
         JButton search = ButtonHandler.create(new Rectangle(FIFTH_FROM_LEFT, PADDING_UP_BUTTON, 150, Constants.BUTTON_DEFAULT_HEIGHT), "Najít", Constants.DEFAULT_FONT, null);
         this.add(search);
+
+        JPanel results = PanelHandler.create(new Rectangle(10, 60, 945, 510));
+        results.setBackground(Color.red);
+        this.add(results);
+
 
         /* Making the frame visible */
         this.setVisible(true);
