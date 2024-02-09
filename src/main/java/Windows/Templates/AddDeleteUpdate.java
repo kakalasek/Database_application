@@ -15,6 +15,9 @@ public class AddDeleteUpdate extends JFrame {
     private static AddDeleteUpdate instance = null;
 
 
+    /* Constructor: Handles most of the code in this class.
+                    The description of the attributes can be found in the comment of the method to create a window of this class
+    */
     private AddDeleteUpdate(String title, String description, String buttonText, Function onSubmit){
 
         FrameHandler.handle(this, new Dimension(540, 360),title, WindowConstants.DISPOSE_ON_CLOSE, () -> instance = null);

@@ -43,7 +43,7 @@ public class MainMenu extends JFrame {
         this.add(icon);
 
         /* All the items (buttons) */
-        JButton search = ButtonHandler.create(new Rectangle(0, FIRST_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "PROHLÍŽET", Constants.DEFAULT_FONT_BOLD, null);
+        JButton search = ButtonHandler.create(new Rectangle(0, FIRST_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "PROHLÍŽET", Constants.DEFAULT_FONT_BOLD, () -> Search.CreateWindow());
         ButtonHandler.centerInFrame(search, this);
         this.add(search);
 
@@ -59,7 +59,7 @@ public class MainMenu extends JFrame {
         ButtonHandler.centerInFrame(remove, this);
         this.add(remove);
 
-        JButton quit = ButtonHandler.create(new Rectangle(0, FIFTH_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "ODEJÍT", Constants.DEFAULT_FONT_BOLD, this::dispose);
+        JButton quit = ButtonHandler.create(new Rectangle(0, FIFTH_ITEM, ITEM_WIDTH, Constants.BUTTON_DEFAULT_HEIGHT), "ODEJÍT", Constants.DEFAULT_FONT_BOLD, () -> System.exit(0));
         ButtonHandler.centerInFrame(quit, this);
         this.add(quit);
 
