@@ -243,20 +243,26 @@ INSERT INTO ucinek(nazev) VALUES('nauzea'); -- 3
 COMMIT;
 
 -- Způsobuje
-INSERT INTO zpusobuje(jed_id, ucinek_id) VALUES (,);
-INSERT INTO zpusobuje(jed_id, ucinek_id) VALUES (,);
-INSERT INTO zpusobuje(jed_id, ucinek_id) VALUES (,);
-INSERT INTO zpusobuje(jed_id, ucinek_id) VALUES (,);
-INSERT INTO zpusobuje(jed_id, ucinek_id) VALUES (,);
-INSERT INTO zpusobuje(jed_id, ucinek_id) VALUES (,);
-INSERT INTO zpusobuje(jed_id, ucinek_id) VALUES (,);
-INSERT INTO zpusobuje(jed_id, ucinek_id) VALUES (,);
-INSERT INTO zpusobuje(jed_id, ucinek_id) VALUES (,);
-INSERT INTO zpusobuje(jed_id, ucinek_id) VALUES (,);
-INSERT INTO zpusobuje(jed_id, ucinek_id) VALUES (,);
+INSERT INTO zpusobuje(jed_id, ucinek_id) VALUES (1,1);
+INSERT INTO zpusobuje(jed_id, ucinek_id) VALUES (1,2);
+INSERT INTO zpusobuje(jed_id, ucinek_id) VALUES (2,3);
+INSERT INTO zpusobuje(jed_id, ucinek_id) VALUES (2,4);
+INSERT INTO zpusobuje(jed_id, ucinek_id) VALUES (2,5);
+INSERT INTO zpusobuje(jed_id, ucinek_id) VALUES (3,5);
+INSERT INTO zpusobuje(jed_id, ucinek_id) VALUES (4,6);
+INSERT INTO zpusobuje(jed_id, ucinek_id) VALUES (4,7);
+INSERT INTO zpusobuje(jed_id, ucinek_id) VALUES (4,8);
+INSERT INTO zpusobuje(jed_id, ucinek_id) VALUES (3,9);
+INSERT INTO zpusobuje(jed_id, ucinek_id) VALUES (3,10);
 
 COMMIT;
 
 -- Obsahuje
+INSERT INTO obsahuje(jed_id, rostlina_id) VALUES (1,1);
+INSERT INTO obsahuje(jed_id, rostlina_id) VALUES (2,3);
+INSERT INTO obsahuje(jed_id, rostlina_id) VALUES (3,2);
+INSERT INTO obsahuje(jed_id, rostlina_id) VALUES (3,4);
+INSERT INTO obsahuje(jed_id, rostlina_id) VALUES (4,5);
+
 
 COMMIT;
