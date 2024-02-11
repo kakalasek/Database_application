@@ -1,0 +1,13 @@
+-- Rod
+INSERT INTO rod(nazev) VALUES ('Bolehlav');
+INSERT INTO rod(nazev) VALUES ('Zimolez');
+INSERT INTO rod(nazev) VALUES ('Rulík');
+INSERT INTO rod(nazev) VALUES ('Pámelník');
+INSERT INTO rod(nazev) VALUES ('Tis');
+
+-- Druh
+INSERT INTO druh(nazev) VALUES ('Plamatý');
+INSERT INTO druh(nazev) VALUES ('Obecný');
+INSERT INTO druh(nazev) VALUES ('Zlomocný');
+INSERT INTO druh(nazev) VALUES ('Bilý');
+INSERT INTO druh(nazev) VALUES ('Červený');
