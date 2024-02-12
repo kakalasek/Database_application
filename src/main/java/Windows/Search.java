@@ -51,7 +51,8 @@ public class Search extends JFrame {
         speciesInput.setPreferredSize(new Dimension(150, 25));
         upper.add(speciesInput);
 
-        JButton search = new JButton("Hledat");
+        JButton search = new JButton("HLEDAT");
+        search.setFont(Constants.DEFAULT_FONT_BOLD);
         upper.add(search);
 
         upper.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0,0,2,0, Color.black), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
