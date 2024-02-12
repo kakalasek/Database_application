@@ -12,16 +12,16 @@ public class PanelHandler {
 
     /**
      * Creates a panel.
-     * @param bounds x and y coordinates, width and height of the panel (in this exact order)
+     * @param layout The layout for the panel
      * @return The initialized panel
      */
-    public static JPanel create(Rectangle bounds){
+    public static JPanel create(LayoutManager layout){
 
         JPanel panel = new JPanel();
 
-        panel.setLayout(null);
+        panel.setLayout(layout);
 
-        panel.setBounds(bounds);
+        panel.setOpaque(true);
 
         return panel;
 
