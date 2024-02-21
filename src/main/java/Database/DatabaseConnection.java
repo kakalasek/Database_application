@@ -48,5 +48,6 @@ public class DatabaseConnection {
     public void close() throws SQLException {
         if(connection == null) throw new NullPointerException("No connection was established for this session");
         connection.close();
+        instance = null;
     }
 }
