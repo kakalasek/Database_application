@@ -1,6 +1,6 @@
 package ComponentHandlers;
 
-import utils.Function;
+import Utils.Function;
 
 import javax.swing.*;
 import java.awt.*;

@@ -2,7 +2,7 @@ package Windows.Templates;
 
 import ComponentHandlers.*;
 import Constants.Constants;
-import utils.Function;
+import Utils.Function;
 
 import javax.swing.*;
 import java.awt.*;

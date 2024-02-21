@@ -1,12 +1,11 @@
 package ComponentHandlers;
 
-import utils.Function;
+import Utils.Function;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.Optional;
 
 /**
  * Handles the initialization of frames, so I don't have to

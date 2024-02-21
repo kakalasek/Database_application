@@ -3,8 +3,8 @@ package ComponentHandlers;
 import javax.swing.*;
 import java.awt.*;
 
-import static utils.TextUtils.getTextHeight;
-import static utils.TextUtils.getTextWidth;
+import static Utils.TextUtils.getTextHeight;
+import static Utils.TextUtils.getTextWidth;
 
 /**
  * Handles label creation, label centering etc.
