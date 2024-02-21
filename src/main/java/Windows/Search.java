@@ -62,7 +62,7 @@ public class Search extends JFrame {
         gbc.gridy = 1;
 
         JPanel main= new JPanel();
-        main.setPreferredSize(new Dimension(980,620));
+        main.setPreferredSize(new Dimension(880,520));
 
        this.getContentPane().add(main, gbc);
 
