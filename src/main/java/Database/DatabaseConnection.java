@@ -1,8 +1,12 @@
 package Database;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class DatabaseConnection {
 
@@ -12,15 +16,21 @@ public class DatabaseConnection {
     private final String password;
     private Connection connection;
 
-    private DatabaseConnection() {
-        this.url = "";
-        this.username = "";
-        this.password = "";
+    private DatabaseConnection(String url, String username, String password) {
+        this.url = url;
+        this.username = username;
+        this.password = password;
     }
 
-    public static DatabaseConnection createConnection(){
+    public static DatabaseConnection createConnection() throws IOException {
         if(instance == null){
-            instance = new DatabaseConnection();
+            Properties prop = new Properties();
+
+            FileInputStream ip = new FileInputStream("src/main/resources/database/config.properties");
+
+            prop.load(ip);
+
+            instance = new DatabaseConnection(prop.getProperty("url"), prop.getProperty("username"), prop.getProperty("password"));
         }
         return instance;
     }
