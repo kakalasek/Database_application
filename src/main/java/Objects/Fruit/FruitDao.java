@@ -1,4 +1,7 @@
 package Objects.Fruit;
 
-public interface FruitDao {
+import Objects.Dao;
+
+public interface FruitDao extends Dao<Fruit> {
+
 }

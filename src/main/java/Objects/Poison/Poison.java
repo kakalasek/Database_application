@@ -6,7 +6,7 @@ public class Poison {
 
     private String name;
     private String group;
-    private ArrayList<String> effects;
+    private final ArrayList<String> effects;
 
     public Poison(String name, String group, double ld50) {
         this.name = name;
