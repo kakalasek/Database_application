@@ -45,6 +45,15 @@ public class Plant {
         this.length = length;
     }
 
+    public Plant(String genus, String species){
+       this.genus = genus;
+       this.species = species;
+       this.environments = new ArrayList<>();
+       this.poisonous_parts = new ArrayList<>();
+       this.poisons = new ArrayList<>();
+       this.states = new ArrayList<>();
+    }
+
     public String getGenus() {
         return genus;
     }

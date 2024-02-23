@@ -5,6 +5,7 @@ import ComponentHandlers.ButtonHandler;
 import ComponentHandlers.FrameHandler;
 import ComponentHandlers.LabelHandler;
 import Constants.Constants;
+import Objects.Plant.PlantDaoImpl;
 import Windows.Templates.AddDeleteUpdate;
 
 import javax.swing.*;
