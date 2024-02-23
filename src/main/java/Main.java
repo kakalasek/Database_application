@@ -1,4 +1,3 @@
-import Database.DatabaseConnection;
 import Windows.MainMenu;
 
 /* NOTE: Soon after starting this project, I learned, that layouts in Swing are actually pretty useful and would make this project work

@@ -1,11 +1,12 @@
 package Windows;
 
-import ComponentHandlers.*;
 import Constants.Constants;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  * Class which represents the search window. It is a singleton.
@@ -17,9 +18,23 @@ public class Search extends JFrame {
     /* Constructor: Handles most of the code in this class */
     private Search(){
         /* Initializing the frame */
-        FrameHandler.handle(this, new Dimension(980, 620), "Prohlížet", WindowConstants.DISPOSE_ON_CLOSE, () -> instance = null);
 
-        this.setContentPane(PanelHandler.create(new GridBagLayout()));
+        this.setTitle("Hledat");
+
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+               instance = null;
+            }
+        });
+
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new GridBagLayout());
+        mainPanel.setOpaque(true);
+
+        this.setContentPane(mainPanel);
 
         GridBagConstraints gbc = new GridBagConstraints();
 
@@ -30,7 +45,6 @@ public class Search extends JFrame {
         gbc.fill = GridBagConstraints.BOTH;
 
         JPanel upper = new JPanel();
-        //upper.setPreferredSize(new Dimension(0, 50));
         upper.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 3));
 
         JLabel genericLabel = new JLabel("Rodové jméno:");
@@ -68,6 +82,9 @@ public class Search extends JFrame {
 
         /* Making the frame visible */
         this.pack();
+
+        this.setLocationRelativeTo(null);
+
         this.setVisible(true);
     }
 
