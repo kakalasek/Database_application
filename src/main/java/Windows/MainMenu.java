@@ -42,7 +42,7 @@ public class MainMenu extends JFrame {
        delete.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
-
+                Delete.createWindow();
            }
        });
        panel.add(delete, BorderLayout.WEST);
@@ -51,7 +51,7 @@ public class MainMenu extends JFrame {
        update.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
-
+               Update.createWindow();
            }
        });
        panel.add(update, BorderLayout.SOUTH);

@@ -3,7 +3,6 @@ package Objects.Plant;
 import Objects.Fruit.Fruit;
 import Objects.Poison.Poison;
 
-import java.sql.Array;
 import java.util.ArrayList;
 
 public class Plant {
@@ -15,10 +14,10 @@ public class Plant {
     private String clade;
     private String subkingdom;
 
-    private String length_of_life;
+    private String lengthOfLife;
     private final ArrayList<String> environments;
 
-    private final ArrayList<String> poisonous_parts;
+    private final ArrayList<String> poisonousParts;
     private final ArrayList<String> states;
     private final ArrayList<Poison> poisons;
     private Fruit fruit;
@@ -34,9 +33,9 @@ public class Plant {
         this.order = order;
         this.clade = clade;
         this.subkingdom = subkingdom;
-        this.length_of_life = length_of_life;
+        this.lengthOfLife = length_of_life;
         this.environments = new ArrayList<>();
-        this.poisonous_parts = new ArrayList<>();
+        this.poisonousParts = new ArrayList<>();
         this.states = new ArrayList<>();
         this.poisons = new ArrayList<>();
         this.fruit = fruit;
@@ -49,7 +48,7 @@ public class Plant {
        this.genus = genus;
        this.species = species;
        this.environments = new ArrayList<>();
-       this.poisonous_parts = new ArrayList<>();
+       this.poisonousParts = new ArrayList<>();
        this.poisons = new ArrayList<>();
        this.states = new ArrayList<>();
     }
@@ -102,12 +101,12 @@ public class Plant {
         this.subkingdom = subkingdom;
     }
 
-    public String getLength_of_life() {
-        return length_of_life;
+    public String getLengthOfLife() {
+        return lengthOfLife;
     }
 
-    public void setLength_of_life(String length_of_life) {
-        this.length_of_life = length_of_life;
+    public void setLengthOfLife(String lengthOfLife) {
+        this.lengthOfLife = lengthOfLife;
     }
 
     public Fruit getFruit() {
@@ -146,8 +145,8 @@ public class Plant {
         return environments;
     }
 
-    public ArrayList<String> getPoisonous_parts() {
-        return poisonous_parts;
+    public ArrayList<String> getPoisonousParts() {
+        return poisonousParts;
     }
 
     public ArrayList<String> getStates() {
@@ -163,7 +162,7 @@ public class Plant {
     }
 
     public void addPoisonousPart(String poisonous_part){
-        poisonous_parts.add(poisonous_part);
+        poisonousParts.add(poisonous_part);
     }
 
     public void addPoison(Poison poison){

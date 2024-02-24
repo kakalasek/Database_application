@@ -1,19 +1,30 @@
 package Windows;
 
 import Constants.Constants;
+import Objects.Fruit.Fruit;
+import Objects.Fruit.FruitDaoImpl;
+import Objects.Plant.PlantDaoImpl;
+import Objects.Poison.Poison;
+import Objects.Poison.PoisonDao;
+import Objects.Poison.PoisonDaoImpl;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 /**
  * Class which represents the search window. It is a singleton.
  */
-public class Search extends JFrame {
+public class Search extends JFrame implements ActionListener{
 
     private static Search instance = null;
+
+    CardLayout cl;
+    JPanel cards;
 
     /* Constructor: Handles most of the code in this class */
     private Search(){
@@ -30,55 +41,32 @@ public class Search extends JFrame {
             }
         });
 
-        JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new GridBagLayout());
-        mainPanel.setOpaque(true);
+        cl = new CardLayout();
+        cards = new JPanel(cl);
 
-        this.setContentPane(mainPanel);
+        PlantsSearch plantsSearch = new PlantsSearch();
 
-        GridBagConstraints gbc = new GridBagConstraints();
+        JComboBox<String> cardBoxPlants = new JComboBox<>(new String[]{"Plants", "Poisons"});
+        cardBoxPlants.setSelectedIndex(0);
 
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 1.0;
-        gbc.weighty = 1.0;
-        gbc.fill = GridBagConstraints.BOTH;
+       cardBoxPlants.addActionListener(this);
 
-        JPanel upper = new JPanel();
-        upper.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 3));
+        plantsSearch.getUpper().add(cardBoxPlants);
 
-        JLabel genericLabel = new JLabel("Rodové jméno:");
-        genericLabel.setFont(Constants.DEFAULT_FONT);
-        upper.add(genericLabel);
+        cards.add("Plants", plantsSearch);
 
-        JTextField genericInput = new JTextField();
-        genericInput.setPreferredSize(new Dimension(150, 25));
-        upper.add(genericInput);
+        PoisonsSearch poisonsSearch = new PoisonsSearch();
 
-        JLabel speciesLabel = new JLabel("Druhové jméno:");
-        speciesLabel.setFont(Constants.DEFAULT_FONT);
-        upper.add(speciesLabel);
+        JComboBox<String> cardBoxPoisons = new JComboBox<>(new String[]{"Plants", "Poisons"});
+        cardBoxPoisons.setSelectedIndex(1);
 
-        JTextField speciesInput = new JTextField();
-        speciesInput.setPreferredSize(new Dimension(150, 25));
-        upper.add(speciesInput);
+        poisonsSearch.getUpper().add(cardBoxPoisons);
 
-        JButton search = new JButton("HLEDAT");
-        search.setFont(Constants.DEFAULT_FONT_BOLD);
-        upper.add(search);
+        cardBoxPoisons.addActionListener(this);
 
-        upper.setBorder(new CompoundBorder(BorderFactory.createMatteBorder(0,0,2,0, Color.black), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+        cards.add("Poisons", poisonsSearch);
 
-        this.getContentPane().add(upper, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridwidth = 5;
-        gbc.gridy = 1;
-
-        JPanel main= new JPanel();
-        main.setPreferredSize(new Dimension(880,520));
-
-       this.getContentPane().add(main, gbc);
+        this.setContentPane(cards);
 
         /* Making the frame visible */
         this.pack();
@@ -93,5 +81,12 @@ public class Search extends JFrame {
         if(instance != null) return;
 
         instance = new Search();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        JComboBox cb = (JComboBox) e.getSource();
+        String card = (String)cb.getSelectedItem();
+        cl.show(cards, card);
     }
 }

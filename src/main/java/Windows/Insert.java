@@ -1,15 +1,23 @@
 package Windows;
 
 import Constants.Constants;
+import Objects.Plant.Plant;
+import Objects.Plant.PlantDaoImpl;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
+import java.sql.SQLException;
 
 public class Insert extends JFrame {
 
     private static Insert instance = null;
+
+    private final PlantDaoImpl pdi = new PlantDaoImpl();
 
     public static Insert createWindow(){
         if (instance == null){
@@ -88,6 +96,19 @@ public class Insert extends JFrame {
        JButton submit = new JButton("Přidat");
        submit.setFont(Constants.DEFAULT_FONT);
        lowestLeft.add(submit);
+
+       submit.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
+               try {
+                   pdi.insert(new Plant(genericInput.getText().trim(), speciesInput.getText().trim()));
+               } catch (SQLException ex) {
+                   throw new RuntimeException(ex);
+               } catch (IOException ex) {
+                   throw new RuntimeException(ex);
+               }
+           }
+       });
 
        this.getContentPane().add(lowestLeft, gbc);
 
