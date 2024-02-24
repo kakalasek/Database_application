@@ -28,6 +28,8 @@ public class PlantDaoImpl implements PlantDao{
 
         int result = ps.executeUpdate();
 
+        conn.commit();
+
         ps.close();
         conn.close();
 
@@ -47,6 +49,8 @@ public class PlantDaoImpl implements PlantDao{
         ps.setString(2, plant.getGenus());
 
         int result = ps.executeUpdate();
+
+        conn.commit();
 
         ps.close();
         conn.close();
@@ -149,6 +153,8 @@ public class PlantDaoImpl implements PlantDao{
         }
 
         ps5.close();
+
+        conn.commit();
 
         rs.close();
         conn.close();

@@ -1,10 +1,10 @@
 package Database;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -49,5 +49,17 @@ public class DatabaseConnection {
         if(connection == null) throw new NullPointerException("No connection was established for this session");
         connection.close();
         instance = null;
+    }
+
+    public void commit() throws SQLException {
+        if(connection == null) throw new NullPointerException("No connection was established for this session");
+
+        String sql = "COMMIT";
+
+        PreparedStatement ps = connection.prepareStatement(sql);
+
+        ps.executeUpdate();
+
+        ps.close();
     }
 }

@@ -63,6 +63,8 @@ public class PoisonDaoImpl implements PoisonDao{
 
         ps2.close();
 
+        conn.commit();
+
         rs.close();
         conn.close();
 
