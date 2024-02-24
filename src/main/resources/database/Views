@@ -1,0 +1,31 @@
+-- Rostliny s plodem
+"SELECT  rod.nazev AS rod,
+        druh.nazev AS druh,
+        podrise.nazev AS podrise,
+        oddeleni.nazev AS oddeleni,
+        trida.nazev AS trida,
+        rad.nazev AS rad,
+        celed.nazev AS celed,
+        delka_zivota.nazev AS delka_zivota,
+        vyska_cm,
+        sirka_cm,
+        delka_cm,
+        (SELECT plod_druh.nazev FROM plod INNER JOIN plod_druh ON plod_druh.id = plod.druh_id WHERE plod.id = rostlina.plod_id) AS druh_plodu,
+        (SELECT plod_barva.nazev FROM plod INNER JOIN plod_barva ON plod_barva.id = plod.barva_id WHERE plod.id = rostlina.plod_id) AS barva_plodu,
+        (SELECT plod_tvar.nazev FROM plod INNER JOIN plod_tvar ON plod_tvar.id = plod.tvar_id WHERE plod.id = rostlina.plod_id) AS tvar_plodu
+FROM rostlina
+INNER JOIN rod ON rod.id = rod_id
+INNER JOIN druh ON druh.id = druh_id
+INNER JOIN podrise ON podrise.id = podrise_id
+INNER JOIN oddeleni ON oddeleni.id = oddeleni_id
+INNER JOIN trida ON trida.id = trida_id
+INNER JOIN rad ON rad.id = rad_id
+INNER JOIN celed ON celed.id = celed_id
+INNER JOIN delka_zivota ON delka_zivota.id = delka_zivota_id";
+
+-- Jedy
+"SELECT  jed.nazev,
+        skupina.nazev AS skupina,
+        ld50_mg_na_kg
+FROM jed
+INNER JOIN skupina ON skupina.id = jed.skupina_id";
