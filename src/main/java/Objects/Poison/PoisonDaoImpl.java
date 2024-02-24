@@ -38,9 +38,9 @@ public class PoisonDaoImpl implements PoisonDao{
         ResultSet rs = ps1.executeQuery();
 
         if(rs.next()){
-            String name = rs.getString("");
-            String group = rs.getString("");
-            double ld50 = rs.getDouble("");
+            String name = rs.getString("nazev");
+            String group = rs.getString("skupina");
+            double ld50 = rs.getDouble("ld50_mg_na_kg");
 
             poison = new Poison(name, group, ld50);
         }
@@ -58,7 +58,7 @@ public class PoisonDaoImpl implements PoisonDao{
         rs = ps2.executeQuery();
 
         while(rs.next()){
-            poison.addEffect(rs.getString(""));
+            poison.addEffect(rs.getString("nazev"));
         }
 
         ps2.close();

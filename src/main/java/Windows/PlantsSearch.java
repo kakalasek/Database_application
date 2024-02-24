@@ -62,16 +62,34 @@ public class PlantsSearch extends JPanel {
         gbc.gridy = 1;
 
         JTabbedPane lower = new JTabbedPane();
+
         JPanel plantData = new JPanel();
+        JTextArea plantDataText = new JTextArea();
+        plantData.add(plantDataText);
+
         JPanel fruitData = new JPanel();
+        JTextArea fruitDataText = new JTextArea();
+        fruitData.add(fruitDataText);
+
         JPanel poisonsData = new JPanel();
+        JTextArea poisonsDataText = new JTextArea();
+        poisonsData.add(poisonsDataText);
+
         JPanel environmentsData = new JPanel();
+        JTextArea environmentsDataText = new JTextArea();
+        environmentsData.add(environmentsDataText);
+
         JPanel statesData = new JPanel();
+        JTextArea statesDataText = new JTextArea();
+        statesData.add(statesDataText);
+
         JPanel poisonousPartsData = new JPanel();
+        JTextArea poisonousPartsDataText = new JTextArea();
+        poisonsData.add(poisonousPartsDataText);
 
         lower.add("Rostlina", plantData);
         lower.add("Plod", fruitData);
-        lower.add("Jed", poisonsData);
+        lower.add("Jedy", poisonsData);
         lower.add("Prostředí", environmentsData);
         lower.add("Státy", statesData);
         lower.add("Jedovaté Části", poisonousPartsData);

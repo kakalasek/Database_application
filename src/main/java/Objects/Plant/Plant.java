@@ -11,6 +11,7 @@ public class Plant {
     private String species;
     private String family;
     private String order;
+    private String class_;
     private String clade;
     private String subkingdom;
 
@@ -26,11 +27,12 @@ public class Plant {
     private double width;
     private double length;
 
-    public Plant(String genus, String species, String family, String order, String clade, String subkingdom, String lengthOfLife, Fruit fruit, double height, double width, double length) {
+    public Plant(String genus, String species, String family, String order, String class_, String clade, String subkingdom, String lengthOfLife, Fruit fruit, double height, double width, double length) {
         this.genus = genus;
         this.species = species;
         this.family = family;
         this.order = order;
+        this.class_ = class_;
         this.clade = clade;
         this.subkingdom = subkingdom;
         this.lengthOfLife = lengthOfLife;

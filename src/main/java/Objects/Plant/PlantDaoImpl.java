@@ -82,31 +82,32 @@ public class PlantDaoImpl implements PlantDao{
         DatabaseConnection conn = DatabaseConnection.createConnection();
         conn.connect();
 
-        String sql1 = "";
+        String sql1 = "SELECT * FROM rostliny_s_plodem WHERE (druh = ? AND rod = ?)";
 
         PreparedStatement ps1 = conn.getConnection().prepareStatement(sql1);
 
-        //ps1.set
-        //ps1.set
+        ps1.setString(1, ispecies);
+        ps1.setString(2, igenus);
 
         ResultSet rs = ps1.executeQuery();
 
         if(rs.next()){
            String genus = rs.getString("rod");
            String species = rs.getString("druh");
-           String family = rs.getString("");
-           String order = rs.getString("");
-           String clade = rs.getString("");
-           String subkingdom = rs.getString("");
-           String lengthOfLife = rs.getString("");
-           String fruitType = rs.getString("");
-           String fruitColor = rs.getString("");
-           String fruitShape = rs.getString("");
-           double height = rs.getDouble("");
-           double width = rs.getDouble("");
-           double length = rs.getDouble("");
+           String family = rs.getString("celed");
+           String order = rs.getString("rad");
+           String class_ = rs.getString("trida");
+           String clade = rs.getString("oddeleni");
+           String subkingdom = rs.getString("podrise");
+           String lengthOfLife = rs.getString("delka_zivota");
+           String fruitType = rs.getString("druh_plodu");
+           String fruitColor = rs.getString("barva_plodu");
+           String fruitShape = rs.getString("tvar_plodu");
+           double height = rs.getDouble("vyska_cm");
+           double width = rs.getDouble("sirka_cm");
+           double length = rs.getDouble("delka_cm");
 
-           plant = new Plant(genus, species, family, order, clade, subkingdom, lengthOfLife, new Fruit(fruitType, fruitColor, fruitShape), height, width, length);
+           plant = new Plant(genus, species, family, order, class_, clade, subkingdom, lengthOfLife, new Fruit(fruitType, fruitColor, fruitShape), height, width, length);
         }
         
         ps1.close();
@@ -122,7 +123,7 @@ public class PlantDaoImpl implements PlantDao{
         rs = ps2.executeQuery();
 
         while(rs.next()){
-            plant.addEnvironment(rs.getString(""));
+            plant.addEnvironment(rs.getString("nazev"));
         }
 
         ps2.close();
@@ -137,7 +138,7 @@ public class PlantDaoImpl implements PlantDao{
         rs = ps3.executeQuery();
 
         while(rs.next()){
-            plant.addPoisonousPart(rs.getString(""));
+            plant.addPoisonousPart(rs.getString("nazev"));
         }
 
         ps3.close();
@@ -152,7 +153,7 @@ public class PlantDaoImpl implements PlantDao{
         rs = ps4.executeQuery();
 
         while(rs.next()){
-            plant.addState(rs.getString(""));
+            plant.addState(rs.getString("nazev"));
         }
 
         ps4.close();
@@ -167,7 +168,7 @@ public class PlantDaoImpl implements PlantDao{
         rs = ps5.executeQuery();
 
         while(rs.next()){
-            plant.addPoison(rs.getString(""));
+            plant.addPoison(rs.getString("nazev"));
         }
 
         ps5.close();
