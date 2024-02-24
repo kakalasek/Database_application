@@ -19,21 +19,21 @@ public class Plant {
 
     private final ArrayList<String> poisonousParts;
     private final ArrayList<String> states;
-    private final ArrayList<Poison> poisons;
+    private final ArrayList<String> poisons;
     private Fruit fruit;
 
     private double height;
     private double width;
     private double length;
 
-    public Plant(String genus, String species, String family, String order, String clade, String subkingdom, String length_of_life, Fruit fruit, double height, double width, double length) {
+    public Plant(String genus, String species, String family, String order, String clade, String subkingdom, String lengthOfLife, Fruit fruit, double height, double width, double length) {
         this.genus = genus;
         this.species = species;
         this.family = family;
         this.order = order;
         this.clade = clade;
         this.subkingdom = subkingdom;
-        this.lengthOfLife = length_of_life;
+        this.lengthOfLife = lengthOfLife;
         this.environments = new ArrayList<>();
         this.poisonousParts = new ArrayList<>();
         this.states = new ArrayList<>();
@@ -153,7 +153,7 @@ public class Plant {
         return states;
     }
 
-    public ArrayList<Poison> getPoisons() {
+    public ArrayList<String> getPoisons() {
         return poisons;
     }
 
@@ -165,7 +165,7 @@ public class Plant {
         poisonousParts.add(poisonous_part);
     }
 
-    public void addPoison(Poison poison){
+    public void addPoison(String poison){
         poisons.add(poison);
     }
 

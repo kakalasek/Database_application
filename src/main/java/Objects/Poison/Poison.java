@@ -8,14 +8,14 @@ public class Poison {
     private String group;
     private final ArrayList<String> effects;
 
+    private double ld50;
+
     public Poison(String name, String group, double ld50) {
         this.name = name;
         this.group = group;
         this.effects = new ArrayList<>();
         this.ld50 = ld50;
     }
-
-    private double ld50;
 
     public String getName() {
         return name;
