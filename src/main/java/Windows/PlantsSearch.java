@@ -2,12 +2,17 @@ package Windows;
 
 import Constants.Constants;
 import Objects.Fruit.FruitDaoImpl;
+import Objects.Plant.Plant;
 import Objects.Plant.PlantDaoImpl;
 import Objects.Poison.PoisonDaoImpl;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.sql.SQLException;
 
 public class PlantsSearch extends JPanel {
 
@@ -86,6 +91,20 @@ public class PlantsSearch extends JPanel {
         JPanel poisonousPartsData = new JPanel();
         JTextArea poisonousPartsDataText = new JTextArea();
         poisonsData.add(poisonousPartsDataText);
+
+        search.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Plant plant = pldi.getByName(speciesInput.getText().trim(), genericInput.getText().trim());
+                    plantDataText.setText(plant.getGenus() + "\n" + plant.getSpecies());
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
 
         lower.add("Rostlina", plantData);
         lower.add("Plod", fruitData);

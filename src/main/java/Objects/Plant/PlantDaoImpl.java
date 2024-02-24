@@ -29,7 +29,7 @@ public class PlantDaoImpl implements PlantDao{
 
         PreparedStatement ps3 = conn.getConnection().prepareStatement(plantSql);
 
-       ps1.setString(1, plant.getGenus());
+        ps1.setString(1, plant.getGenus());
 
         ps1.execute();
         ps1.close();
@@ -59,21 +59,36 @@ public class PlantDaoImpl implements PlantDao{
         DatabaseConnection conn = DatabaseConnection.createConnection();
         conn.connect();
 
-        String sql = "DELETE FROM rostlina WHERE (druh = ? AND rod = ?)";
+        String genusSql = "DELETE FROM rod WHERE nazev = ?";
+        String speciesSql = "DELETE FROM druh WHERE nazev = ?";
+        String plantSql = "DELETE FROM rostlina WHERE ((rod_id = (SELECT rod.id FROM rod WHERE rod.nazev = ?)) AND (druh_id = (SELECT druh.id FROM druh WHERE druh.nazev = ?)))";
 
-        PreparedStatement ps = conn.getConnection().prepareStatement(sql);
 
-        ps.setString(1, plant.getSpecies());
-        ps.setString(2, plant.getGenus());
+        PreparedStatement ps1 = conn.getConnection().prepareStatement(genusSql);
+        PreparedStatement ps2 = conn.getConnection().prepareStatement(speciesSql);
+        PreparedStatement ps3 = conn.getConnection().prepareStatement(plantSql);
 
-        int result = ps.executeUpdate();
+        ps1.setString(1, plant.getGenus());
+
+        ps1.execute();
+        ps1.close();
+
+        ps2.setString(1, plant.getSpecies());
+
+        ps2.execute();
+        ps2.close();
+
+        ps3.setString(1, plant.getGenus());
+        ps3.setString(2, plant.getSpecies());
+
+        ps3.execute();
+        ps3.close();
 
         conn.commit();
 
-        ps.close();
         conn.close();
 
-        return result;
+        return 1;
     }
 
     @Override
@@ -99,7 +114,7 @@ public class PlantDaoImpl implements PlantDao{
            String class_ = rs.getString("trida");
            String clade = rs.getString("oddeleni");
            String subkingdom = rs.getString("podrise");
-           String lengthOfLife = rs.getString("delka_zivota");
+           String lengthOfLife = rs.getString("nazev");
            String fruitType = rs.getString("druh_plodu");
            String fruitColor = rs.getString("barva_plodu");
            String fruitShape = rs.getString("tvar_plodu");
@@ -111,7 +126,7 @@ public class PlantDaoImpl implements PlantDao{
         }
         
         ps1.close();
-
+/*
         //--------------------
 
         String sql2 = "";
@@ -172,6 +187,8 @@ public class PlantDaoImpl implements PlantDao{
         }
 
         ps5.close();
+
+ */
 
         conn.commit();
 
