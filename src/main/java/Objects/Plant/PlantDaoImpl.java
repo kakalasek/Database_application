@@ -19,21 +19,39 @@ public class PlantDaoImpl implements PlantDao{
         DatabaseConnection conn = DatabaseConnection.createConnection();
         conn.connect();
 
-        String sql = "INSERT INTO rostlina(druh, rod) VALUES (?, ?)";
+        String genusSql = "INSERT INTO rod(nazev) VALUES (?)";
+        String speciesSql = "INSERT INTO druh(nazev) VALUES (?)";
+        String plantSql = "INSERT INTO rostlina(rod_id, druh_id) VALUES ((SELECT rod.id FROM rod WHERE rod.nazev = ?), (SELECT druh.id FROM druh WHERE druh.nazev = ?))";
 
-        PreparedStatement ps = conn.getConnection().prepareStatement(sql);
+        PreparedStatement ps1 = conn.getConnection().prepareStatement(genusSql);
 
-        ps.setString(1, plant.getSpecies());
-        ps.setString(2, plant.getGenus());
+        PreparedStatement ps2 = conn.getConnection().prepareStatement(speciesSql);
 
-        int result = ps.executeUpdate();
+        PreparedStatement ps3 = conn.getConnection().prepareStatement(plantSql);
+
+       ps1.setString(1, plant.getGenus());
+
+        ps1.execute();
+        ps1.close();
+
+
+        ps2.setString(1, plant.getSpecies());
+
+        ps2.execute();
+        ps2.close();
+
+        ps3.setString(1, plant.getGenus());
+        ps3.setString(2, plant.getSpecies());
+
+        ps3.execute();
+        ps3.close();
+
 
         conn.commit();
 
-        ps.close();
         conn.close();
 
-        return result;
+        return 1;
     }
 
     @Override
