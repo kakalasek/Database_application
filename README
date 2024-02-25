@@ -1,0 +1,18 @@
+Pozn.: Kvůli rozsáhlosti aplikace a nedostatku času chybí některé fíčury (úprava záznamů, přidání záznamů ze souboru, nějaké roszáhlejší chybové hlášky)
+
+Jak to zprovoznit?
+==================
+Je to naprosto jednoduchý. Rozhodně se nelekejte množství kódu a velikosti databáze, ani s jedním z nich nebudete muset žádným způsobem zacházet.
+Aplikace je okénková, abyste to měli ještě jednodušší, vy lenoši.
+    Jako databázový systém používám Oracle, protože nemám rád Microsoft. A vy byste ho měli taky nesnášet. Mění se tím něco pro vás, jako pro uživatele mé aplikace?
+V podstatě ne, furt to bude jednoduchý jak facka. No, dost keců a pustme se do toho.
+     V první řadě musíme vytvořit naše tabulky. V adresáři src/main/resources/database najdete všechno potřebné. Od tabulkek, pohledů až po testovací data.
+Scripty stačí zkopíraovat tak, jak jsou, a spustit, oni už se postarají o všechno ostatní. Pohledy samozřejmě musíte vytvořit až po tabulkách, jinak nebudou fungovat.
+O informace ohledně připojení do školního Oracle DBMS si bude muset zažádat u vyučujícího, já používám lokální.
+    Poslední krok je zadat správně údaje pro připojení do souboru src/main/resources/database/config.properties. Username a password by snad měli být jasné.
+Nechám tam své údaje pro ukázku. Username MUSÍ být velkými písmeny. Co ale možná nebude na první pohled jasné, je URL. To by mělo být ve tvaru typ_driveru@hostname:port/service_name
+Co je co a kde to všechno najdu? Typ driveru nechte takový, jaký je tam předpřipravený ode mne, jiný snad potřebovat nebudete. Hostname bude pravděpodobně taky localhost, ale to
+vám upřesní vyučující. Co já vím, jak to tam mají zařízené. Port, stejně jako u hostnamu, upřesní vyučující. Service name, opět to samé.
+Místo service name lze použít SID s jediným rozdílem, není za lomítkem ale za dvojtečkou. Všechny tyhle údaje najdete v podrobnostech o připojení v SQL developeru.
+Opět připomínám, nemám páru, jak je to řešené ve škole, takže přesný návod, jak se připojit k databázi, vám nedám..
+    Zbytek už za vás vyřeší okénkové rozhraní. Pokud potřebujete návod i na něj, tak potřebujete hlavně do speciální školy..
