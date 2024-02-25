@@ -1,5 +1,10 @@
 package Windows;
 
+import Windows.InsertUpdateDelete.Delete;
+import Windows.InsertUpdateDelete.Insert;
+import Windows.InsertUpdateDelete.Update;
+import Windows.Search.Search;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

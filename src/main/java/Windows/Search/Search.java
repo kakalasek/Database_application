@@ -1,15 +1,6 @@
-package Windows;
-
-import Constants.Constants;
-import Objects.Fruit.Fruit;
-import Objects.Fruit.FruitDaoImpl;
-import Objects.Plant.PlantDaoImpl;
-import Objects.Poison.Poison;
-import Objects.Poison.PoisonDao;
-import Objects.Poison.PoisonDaoImpl;
+package Windows.Search;
 
 import javax.swing.*;
-import javax.swing.border.CompoundBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

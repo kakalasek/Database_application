@@ -7,6 +7,7 @@ import Windows.MainMenu;
 *  EDIT: Don't take this code too seriously... it is mostly just me learning how to properly work in Swing and trying out some new techniques and methods...
 *        but everything should somewhat work here of course
 *  EDIT: Okay, in the end, I am doing everything with layouts... it is easier and I had some difficulties with my original design...
+*  NOTE: I was too lazy to comment everything... it is not too important here anyway
 */
 public class Main {
     public static void main(String[] args) {

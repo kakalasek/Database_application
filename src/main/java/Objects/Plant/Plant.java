@@ -5,6 +5,9 @@ import Objects.Poison.Poison;
 
 import java.util.ArrayList;
 
+/**
+ * Used for further interaction
+ */
 public class Plant {
 
     private String genus;

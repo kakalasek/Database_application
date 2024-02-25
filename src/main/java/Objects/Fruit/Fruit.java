@@ -1,5 +1,8 @@
 package Objects.Fruit;
 
+/**
+ * Fruit object, used for further interaction
+ */
 public class Fruit {
 
     private String type;

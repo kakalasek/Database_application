@@ -1,4 +1,4 @@
-package Windows;
+package Windows.InsertUpdateDelete;
 
 import Constants.Constants;
 import Objects.Plant.Plant;
@@ -100,7 +100,7 @@ public class Delete extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    pdi.delete(new Plant(genericInput.getText().trim(), speciesInput.getText().trim()));
+                    pdi.delete(new Plant(genericInput.getText().trim().toLowerCase(), speciesInput.getText().trim().toLowerCase()));
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 } catch (IOException ex) {

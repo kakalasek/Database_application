@@ -2,6 +2,9 @@ package Objects.Poison;
 
 import java.util.ArrayList;
 
+/**
+ * Used for further interaction
+ */
 public class Poison {
 
     private String name;

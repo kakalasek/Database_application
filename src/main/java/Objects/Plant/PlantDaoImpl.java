@@ -8,6 +8,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Defines bodies of all basic and specific interactions. Not all of them are used
+ */
 public class PlantDaoImpl implements PlantDao{
     @Override
     public Plant get(int id) throws SQLException {

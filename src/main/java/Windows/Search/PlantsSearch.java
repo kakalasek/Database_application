@@ -1,10 +1,8 @@
-package Windows;
+package Windows.Search;
 
 import Constants.Constants;
-import Objects.Fruit.FruitDaoImpl;
 import Objects.Plant.Plant;
 import Objects.Plant.PlantDaoImpl;
-import Objects.Poison.PoisonDaoImpl;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -17,9 +15,6 @@ import java.sql.SQLException;
 public class PlantsSearch extends JPanel {
 
     private final PlantDaoImpl pldi = new PlantDaoImpl();
-    private final PoisonDaoImpl podi = new PoisonDaoImpl();
-    private final FruitDaoImpl frdi = new FruitDaoImpl();
-
     private final JPanel upper;
 
     public PlantsSearch(){
@@ -96,7 +91,7 @@ public class PlantsSearch extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Plant plant = pldi.getByName(speciesInput.getText().trim(), genericInput.getText().trim());
+                    Plant plant = pldi.getByName(speciesInput.getText().trim().toLowerCase(), genericInput.getText().trim().toLowerCase());
                     plantDataText.setText("");
                     poisonousPartsDataText.setText("");
                     environmentsDataText.setText("");
