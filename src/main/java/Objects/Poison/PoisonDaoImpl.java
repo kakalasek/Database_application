@@ -29,11 +29,11 @@ public class PoisonDaoImpl implements PoisonDao{
         DatabaseConnection conn = DatabaseConnection.createConnection();
         conn.connect();
 
-        String sql1 = "";
+        String sql1 = "SELECT * FROM jedy WHERE nazev = ?";
 
         PreparedStatement ps1 = conn.getConnection().prepareStatement(sql1);
 
-        //ps1.set
+        ps1.setString(1, iname);
 
         ResultSet rs = ps1.executeQuery();
 
@@ -49,11 +49,15 @@ public class PoisonDaoImpl implements PoisonDao{
 
         //------------------
 
-        String sql2 = "";
+        String sql2 = "SELECT ucinek.nazev " +
+                "FROM zpusobuje " +
+                "INNER JOIN jed ON jed.id = jed_id " +
+                "INNER JOIN ucinek ON ucinek.id = ucinek_id " +
+                "WHERE jed.id = (SELECT id FROM jed WHERE nazev = ?)";
 
         PreparedStatement ps2 = conn.getConnection().prepareStatement(sql2);
 
-        //ps2.set
+        ps2.setString(1, iname);
 
         rs = ps2.executeQuery();
 

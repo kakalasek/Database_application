@@ -1,5 +1,6 @@
 -- Rostliny s plodem
-"SELECT  rod.nazev AS rod,
+CREATE VIEW rostliny_s_plodem AS
+SELECT rod.nazev AS rod,
         druh.nazev AS druh,
         podrise.nazev AS podrise,
         oddeleni.nazev AS oddeleni,
@@ -21,11 +22,12 @@ LEFT JOIN oddeleni ON oddeleni.id = oddeleni_id
 LEFT JOIN trida ON trida.id = trida_id
 LEFT JOIN rad ON rad.id = rad_id
 LEFT JOIN celed ON celed.id = celed_id
-LEFT JOIN delka_zivota ON delka_zivota.id = delka_zivota_id";
+LEFT JOIN delka_zivota ON delka_zivota.id = delka_zivota_id;
 
 -- Jedy
-"SELECT  jed.nazev,
+CREATE VIEW jedy AS
+SELECT  jed.nazev,
         skupina.nazev AS skupina,
         ld50_mg_na_kg
 FROM jed
-LEFT JOIN skupina ON skupina.id = jed.skupina_id";
+LEFT JOIN skupina ON skupina.id = jed.skupina_id;

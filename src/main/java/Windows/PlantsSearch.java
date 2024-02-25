@@ -90,14 +90,40 @@ public class PlantsSearch extends JPanel {
 
         JPanel poisonousPartsData = new JPanel();
         JTextArea poisonousPartsDataText = new JTextArea();
-        poisonsData.add(poisonousPartsDataText);
+        poisonousPartsData.add(poisonousPartsDataText);
 
         search.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     Plant plant = pldi.getByName(speciesInput.getText().trim(), genericInput.getText().trim());
-                    plantDataText.setText(plant.getGenus() + "\n" + plant.getSpecies());
+                    plantDataText.setText("");
+                    poisonousPartsDataText.setText("");
+                    environmentsDataText.setText("");
+                    statesDataText.setText("");
+                    poisonousPartsDataText.setText("");
+
+                    plantDataText.setText(  "Rod: " + plant.getGenus() + "\n" +
+                                            "Druh: " + plant.getSpecies() + "\n" +
+                                            "Čeleď: " + plant.getFamily() + "\n" +
+                                            "Řád: " + plant.getOrder() + "\n" +
+                                            "Třída: " + plant.getClass_() + "\n" +
+                                            "Oddělení: " + plant.getClade() + "\n" +
+                                            "Podříše: " + plant.getSubkingdom() + "\n" +
+                                            "Délka života: " + plant.getLengthOfLife() + "\n" +
+                                            "Výška: " + plant.getHeight() + "\n" +
+                                            "Šířka: " + plant.getWidth() + "\n" +
+                                            "Délka: " + plant.getLength()
+                    );
+                    fruitDataText.setText(
+                            "Typ plodu: " + plant.getFruit().getType() + "\n" +
+                            "Barva plodu: " + plant.getFruit().getColor() + "\n" +
+                            "Tvar plodu: " + plant.getFruit().getShape() + "\n"
+                    );
+                    for(String poison : plant.getPoisons()) poisonsDataText.setText(poisonsDataText.getText() + poison + "\n");
+                    for(String environment : plant.getEnvironments()) environmentsDataText.setText(environmentsDataText.getText() + environment + "\n");
+                    for(String state : plant.getStates()) statesDataText.setText(statesDataText.getText() + state + "\n");
+                    for(String poisonousPart : plant.getPoisonousParts()) poisonousPartsDataText.setText(poisonousPartsDataText.getText() + poisonousPart + "\n");
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 } catch (IOException ex) {

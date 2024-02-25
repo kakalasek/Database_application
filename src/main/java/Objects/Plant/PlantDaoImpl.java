@@ -126,14 +126,20 @@ public class PlantDaoImpl implements PlantDao{
         }
         
         ps1.close();
-/*
+
         //--------------------
 
-        String sql2 = "";
+        String sql2 = "SELECT prostredi.nazev " +
+                      "FROM roste " +
+                      "INNER JOIN rostlina ON rostlina.id = rostlina_id " +
+                      "INNER JOIN prostredi ON prostredi.id = prostredi_id " +
+                      "WHERE ((rostlina.rod_id = (SELECT id FROM rod WHERE nazev = ?)) AND (rostlina.druh_id = (SELECT id FROM druh WHERE nazev = ?)))";
 
         PreparedStatement ps2 = conn.getConnection().prepareStatement(sql2);
 
-        //ps2.set
+        ps2.setString(1, igenus);
+        ps2.setString(2, ispecies);
+
 
         rs = ps2.executeQuery();
 
@@ -144,11 +150,17 @@ public class PlantDaoImpl implements PlantDao{
         ps2.close();
         //--------------------
 
-        String sql3 = "";
+        String sql3 = "SELECT rostlina_cast.nazev " +
+                      "FROM jedovaty " +
+                      "INNER JOIN rostlina ON rostlina.id = rostlina_id " +
+                      "INNER JOIN rostlina_cast ON rostlina_cast.id = cast_id " +
+                      "WHERE ((rostlina.rod_id = (SELECT id FROM rod WHERE nazev = ?)) AND (rostlina.druh_id = (SELECT id FROM druh WHERE nazev = ?)))";
 
         PreparedStatement ps3 = conn.getConnection().prepareStatement(sql3);
 
-        //ps3.set
+        ps3.setString(1, igenus);
+        ps3.setString(2, ispecies);
+
 
         rs = ps3.executeQuery();
 
@@ -159,11 +171,17 @@ public class PlantDaoImpl implements PlantDao{
         ps3.close();
         //--------------------
 
-        String sql4 = "";
+        String sql4 = "SELECT zeme.nazev " +
+                "FROM vyskyt " +
+                "INNER JOIN rostlina ON rostlina.id = rostlina_id " +
+                "INNER JOIN zeme ON zeme.id = zeme_id " +
+                "WHERE ((rostlina.rod_id = (SELECT id FROM rod WHERE nazev = ?)) AND (rostlina.druh_id = (SELECT id FROM druh WHERE nazev = ?)))";
+
 
         PreparedStatement ps4 = conn.getConnection().prepareStatement(sql4);
 
-        //ps4.set
+        ps4.setString(1, igenus);
+        ps4.setString(2, ispecies);
 
         rs = ps4.executeQuery();
 
@@ -174,11 +192,16 @@ public class PlantDaoImpl implements PlantDao{
         ps4.close();
         //--------------------
 
-        String sql5 = "";
+        String sql5 = "SELECT jed.nazev " +
+                "FROM obsahuje " +
+                "INNER JOIN rostlina ON rostlina.id = rostlina_id " +
+                "INNER JOIN jed ON jed.id = jed_id " +
+                "WHERE ((rostlina.rod_id = (SELECT id FROM rod WHERE nazev = ?)) AND (rostlina.druh_id = (SELECT id FROM druh WHERE nazev = ?)))";
 
         PreparedStatement ps5 = conn.getConnection().prepareStatement(sql5);
 
-        //ps5.set
+        ps5.setString(1, igenus);
+        ps5.setString(2, ispecies);
 
         rs = ps5.executeQuery();
 
@@ -187,8 +210,6 @@ public class PlantDaoImpl implements PlantDao{
         }
 
         ps5.close();
-
- */
 
         conn.commit();
 

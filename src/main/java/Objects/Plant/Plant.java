@@ -55,6 +55,14 @@ public class Plant {
        this.states = new ArrayList<>();
     }
 
+    public String getClass_() {
+        return class_;
+    }
+
+    public void setClass_(String class_) {
+        this.class_ = class_;
+    }
+
     public String getGenus() {
         return genus;
     }

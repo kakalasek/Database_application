@@ -3,11 +3,16 @@ package Windows;
 import Constants.Constants;
 import Objects.Fruit.FruitDaoImpl;
 import Objects.Plant.PlantDaoImpl;
+import Objects.Poison.Poison;
 import Objects.Poison.PoisonDaoImpl;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.sql.SQLException;
 
 public class PoisonsSearch extends JPanel {
     private final PlantDaoImpl pldi = new PlantDaoImpl();
@@ -53,8 +58,35 @@ public class PoisonsSearch extends JPanel {
         gbc.gridy = 1;
 
         JTabbedPane lower = new JTabbedPane();
+
         JPanel poisonData = new JPanel();
+        JTextArea poisonDataText = new JTextArea();
+        poisonData.add(poisonDataText);
+
         JPanel effectsData = new JPanel();
+        JTextArea effectsDataText = new JTextArea();
+        effectsData.add(effectsDataText);
+
+        search.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Poison poison = podi.getByName(nameInput.getText());
+                    poisonDataText.setText("");
+                    effectsDataText.setText("");
+                    poisonDataText.setText(
+                            "Název: " + poison.getName() + "\n" +
+                                    "Skupina: " + poison.getGroup() + "\n" +
+                                    "LD50: " + poison.getLd50()
+                    );
+                    for(String effect : poison.getEffects()) effectsDataText.setText(effectsDataText.getText() + effect + "\n");
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
 
         lower.add("Jed", poisonData);
         lower.add("Účinky", effectsData);
